@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class MaxHeap implements Heap {
     int size;
 
@@ -7,6 +8,11 @@ public class MaxHeap implements Heap {
         data = new Integer[capacity];
         size = 0;
     }
+    
+    public boolean equals(Integer[] other) {
+    	return Arrays.equals(this.data, other); //placeholder
+    }
+    
     
     public static void main(String[] args) {
     	
