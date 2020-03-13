@@ -8,7 +8,7 @@ public class MaxHeapTest {
 			{}, //empty
 			{60, 30, 15, 2, 7}, //already heapified, shouldn't change
 			
-			//not in heap form
+			//not in heap form 
 			{10, 1, 6, 7, 5, 8},
 			{1, 0, 5, 9, 4},
 			{2, 5, 8, 10},
@@ -42,7 +42,6 @@ public class MaxHeapTest {
 		
 		for (int i = 0; i < testArrays.length; i++) {		
 			MaxHeap testHeap = new MaxHeap(testArrays[i].length);
-			System.out.println(i);
 			testHeap.MaxHeapLogN(testArrays[i]);
 			
 			assertTrue(testHeap.equals(expected[i]));
@@ -50,29 +49,35 @@ public class MaxHeapTest {
 		
 	}
 	
-	/*
-	 // homework
-		@Test
-		public void testN() {
-			Integer[][] expected = {
-					
-					{},
-					{60, 30, 15, 2, 7},
-					{10, 7, 8, 5, 1, 6},
-					{9, 5, 1, 0, 4},
-					{10, 5, 8, 2},
-					
-					{2, 1, 1, 1, 1},
-					{2, 1, 1, 1, 1},
-					{1, 1, 1, 1},
-					{1}
-					
-					
-			};
-			
-			
-		}
 	
-	*/
+	 // homework
+	@Test
+	public void testN() {
+		Integer[][] expected = {
+					
+				{},
+				{60, 30, 15, 2, 7},
+				{10, 7, 8, 1, 5, 6},
+				{9, 4, 5, 0, 1},
+				{10, 5, 8, 2},
+					
+				{2, 1, 1, 1, 1},
+				{2, 1, 1, 1, 1},
+				{1, 1, 1, 1},
+				{1}
+
+		};
+		
+		for (int i = 0; i < testArrays.length; i++) {		
+			MaxHeap testHeap = new MaxHeap(testArrays[i].length);
+			testHeap.MaxHeapN(testArrays[i]);
+			assertTrue(testHeap.equals(expected[i]));
+		}
+		
+			
+			
+	}
+	
+	
 	
 }

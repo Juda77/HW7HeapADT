@@ -10,24 +10,14 @@ public class MaxHeap implements Heap {
     }
     
     public boolean equals(Integer[] other) {
-    	System.out.println(Arrays.toString(this.data) + "\n" + Arrays.toString(other));
-    	return Arrays.equals(this.data, other); //placeholder
-    }
-    
-    
-    public static void main(String[] args) {
-    	
-    	System.out.println((0 - 1)/ 2);
-    	
+    	return Arrays.equals(this.data, other); 
     }
     
     public void swap(int parentIndex, int childIndex) {
     	int temp = data[parentIndex];
     	data[parentIndex] = data[childIndex];
     	data[childIndex] = temp;
-    	//System.out.println(Arrays.toString(data));
     }
-    
     
     public void heapifyUp(int n) {
     	int parentIndex = (n - 1) / 2;
@@ -37,11 +27,9 @@ public class MaxHeap implements Heap {
     	if (n > 0 && parent < child) {
     		//swap
     		swap(parentIndex, n);
-    		
-    		//heapifyDown(n);
+
     		//recurse
-    		heapifyUp(parentIndex);
-    		
+    		heapifyUp(parentIndex);	
 
     	}
     	
@@ -52,36 +40,60 @@ public class MaxHeap implements Heap {
     	int leftChildIndex = n * 2 + 1;
     	int rightChildIndex = n * 2 + 2;
     	int parent = data[n];
-    	
-    	System.out.println(leftChildIndex + " " + rightChildIndex + " " + size);
-    	
-    	if (leftChildIndex > size && (rightChildIndex < size && data[rightChildIndex] > parent)) {
+
+    	if (leftChildIndex >= size && (rightChildIndex < size && data[rightChildIndex] > parent)) {
+    		System.out.println("1");
     		swap(n, rightChildIndex);
     		heapifyDown(rightChildIndex);
-    	} else if (rightChildIndex > size && (leftChildIndex < size && data[leftChildIndex] > parent)) {
+    	} else if (rightChildIndex >= size && (leftChildIndex < size && data[leftChildIndex] > parent)) {
+    		System.out.println("2");
     		swap(n, leftChildIndex);
     		heapifyDown(leftChildIndex);
-    	} else if ((rightChildIndex < size && leftChildIndex < size) && data[leftChildIndex] > data[rightChildIndex]) {
+    	} else if ((rightChildIndex < size && leftChildIndex < size) && data[leftChildIndex] > data[rightChildIndex] && data[leftChildIndex] > parent ) {
+    		System.out.println("3");
     		swap(n, leftChildIndex);
     		heapifyDown(leftChildIndex);	
-    	} else if ((rightChildIndex < size && leftChildIndex < size) && data[rightChildIndex] > data[leftChildIndex]) {
+    	} else if ((rightChildIndex < size && leftChildIndex < size) && data[rightChildIndex] > data[leftChildIndex] && data[rightChildIndex] > parent) {
+    		System.out.println("4");
     		swap(n, rightChildIndex);
     		heapifyDown(rightChildIndex);
     	}	
     	
     }
-    
 
     // build a heap based on data
     // to be implemented in O(nlogn)
     public void MaxHeapLogN(Integer[] data) {
-    	
+
         // homework
     	for (int i = 0; i < data.length; i++) { 		
-    		//System.out.println(Arrays.toString(data));
     		add(data[i]);	
     	}
  	
+    }
+    
+    // build a heap based on data
+    // to be implemented in O(n)
+    public void MaxHeapN(Integer[] data) {
+        // homework
+    	
+    	//insert argument array elements into heap as is
+    	for (int i = 0; i < data.length; i++) {
+    		this.data[i] = data[i];	
+    		size++;
+    	}
+    	
+    	if (size == 0) {
+    		return;
+    	}
+    	
+    	//heapify each node in heap starting from last parent
+    	for (int i = (size - 1) / 2; i >= 0; i--) {
+
+    		heapifyDown(i);
+    		
+    	}
+    	
     }
     
     // add an item to the heap
@@ -97,18 +109,6 @@ public class MaxHeap implements Heap {
     	
         return true;
     }
-
-    // build a heap based on data
-    // to be implemented in O(n)
-    public void MaxHeapN(Integer[] data) {
-        // homework
-    	
-    	
-    	
-    	
-    }
-
-   
 
     // return the max item in the heap
     public Integer get() {
