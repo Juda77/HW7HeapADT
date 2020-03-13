@@ -176,7 +176,7 @@ public class MaxHeapTest {
 		
 		for (int i = 0; i < 6; i++) {
 			
-			MaxHeap testHeap = new MaxHeap(10); //make capacity 10 so we can actualy add
+			MaxHeap testHeap = new MaxHeap(10); //make capacity 10 so we actually have space to add more elements
 			testHeap.MaxHeapN(testArrays[i]);
 			testHeaps[i] = testHeap;
 			
@@ -187,11 +187,12 @@ public class MaxHeapTest {
 		testHeaps[6] = testHeap;
 		
 		Integer[] valuesToAdd = {3, 6, 9}; //add each of these values to all test heaps and make sure that test heaps afterwards are correct
+		boolean[] returnVals = new boolean[7];
 		
 		for (int i = 0; i < testHeaps.length; i++) {	
 
 			for (int j = 0; j < valuesToAdd.length; j++) {
-				testHeaps[i].add(valuesToAdd[j]);	
+				returnVals[i] = testHeaps[i].add(valuesToAdd[j]);	
 			}	
 			
 		}
@@ -207,7 +208,17 @@ public class MaxHeapTest {
 		};
 		
 		for (int i = 0; i < testHeaps.length; i++) {
+			//test if final heaps match expected
 			assertTrue(testHeaps[i].equals(expected[i]));
+			
+			//also make sure that return values are correct
+			if (i == testHeaps.length - 1) {
+				assertEquals(returnVals[i], false);
+			} else {
+				assertEquals(returnVals[i], true);
+			}
+			
+			
 		}
 
 	}
