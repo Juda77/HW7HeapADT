@@ -19,38 +19,60 @@ public class MaxHeapTest {
 			{1} //single element
 	};
 	
-	Integer[][] expected = {
-			
-			{},
-			{60, 30, 15, 2, 7},
-			{10, 7, 8, 5, 1, 6},
-			{9, 4, 5, 1, 0},
-			{10, 5, 8, 2},
-			
-			{2, 1, 1, 1, 1},
-			{2, 1, 1, 1, 1},
-			{1, 1, 1, 1},
-			{1}
-			
-			
-	};
-	
-
 	
     // homework
 	@Test
 	public void testNLogN() {
 		
+		Integer[][] expected = {
+				
+				{},
+				{60, 30, 15, 2, 7},
+				{10, 7, 8, 1, 5, 6},
+				{9, 5, 1, 0, 4},
+				{10, 8, 5, 2},
+				
+				{2, 1, 1, 1, 1},
+				{2, 1, 1, 1, 1},
+				{1, 1, 1, 1},
+				{1}
+				
+				
+		};
+		
 		for (int i = 0; i < testArrays.length; i++) {		
-			MaxHeap testHeap = new MaxHeap(10);
+			MaxHeap testHeap = new MaxHeap(testArrays[i].length);
+			System.out.println(i);
 			testHeap.MaxHeapLogN(testArrays[i]);
+			
 			assertTrue(testHeap.equals(expected[i]));
 		}
 		
 	}
 	
+	/*
+	 // homework
+		@Test
+		public void testN() {
+			Integer[][] expected = {
+					
+					{},
+					{60, 30, 15, 2, 7},
+					{10, 7, 8, 5, 1, 6},
+					{9, 5, 1, 0, 4},
+					{10, 5, 8, 2},
+					
+					{2, 1, 1, 1, 1},
+					{2, 1, 1, 1, 1},
+					{1, 1, 1, 1},
+					{1}
+					
+					
+			};
+			
+			
+		}
 	
-	
-	
+	*/
 	
 }
