@@ -5,6 +5,7 @@ public class MaxHeap implements Heap {
     Integer[] data;
 
     public MaxHeap(int capacity) {
+    	
         data = new Integer[capacity];
         size = 0;
     }
@@ -78,7 +79,9 @@ public class MaxHeap implements Heap {
     	
     	//insert argument array elements into heap as is
 
-    	this.data = data;
+    	for (int i = 0; i < data.length; i++) {
+    		this.data[i] = data[i];
+    	}
     	size = data.length;
     	
     	if (size == 0) {
@@ -95,6 +98,7 @@ public class MaxHeap implements Heap {
     // add an item to the heap
     public boolean add(Integer item) {
         // homework
+    	//System.out.println(Arrays.toString(this.data) + " " + data.length);
     	if (size == data.length) {
     		return false;
     	}
@@ -119,7 +123,19 @@ public class MaxHeap implements Heap {
     // remove the root item
     public Integer pop() {
         // homework
-        return null;
+    	if (size == 0) {
+    		return null;
+    	}
+    	
+    	Integer topPriority = data[0];
+    	data[0] = data[size - 1];
+    	data[size - 1] = null;
+    	size--;
+    	if (size > 0) {
+    		heapifyDown(0);
+    	}
+    	
+        return topPriority;
     }
      
 }
