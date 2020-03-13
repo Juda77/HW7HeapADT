@@ -10,6 +10,7 @@ public class MaxHeap implements Heap {
     }
     
     public boolean equals(Integer[] other) {
+    	//System.out.println(Arrays.toString(this.data) + "\n" + Arrays.toString(other));
     	return Arrays.equals(this.data, other); 
     }
     
@@ -19,6 +20,7 @@ public class MaxHeap implements Heap {
     	data[childIndex] = temp;
     }
     
+    //used for nlogn heap build
     public void heapifyUp(int n) {
     	int parentIndex = (n - 1) / 2;
     	int parent = data[parentIndex];
@@ -35,6 +37,7 @@ public class MaxHeap implements Heap {
     	
     }
     
+    //used for logn heap build
     public void heapifyDown(int n) {
     	
     	int leftChildIndex = n * 2 + 1;
@@ -42,19 +45,15 @@ public class MaxHeap implements Heap {
     	int parent = data[n];
 
     	if (leftChildIndex >= size && (rightChildIndex < size && data[rightChildIndex] > parent)) {
-    		System.out.println("1");
     		swap(n, rightChildIndex);
     		heapifyDown(rightChildIndex);
     	} else if (rightChildIndex >= size && (leftChildIndex < size && data[leftChildIndex] > parent)) {
-    		System.out.println("2");
     		swap(n, leftChildIndex);
     		heapifyDown(leftChildIndex);
     	} else if ((rightChildIndex < size && leftChildIndex < size) && data[leftChildIndex] > data[rightChildIndex] && data[leftChildIndex] > parent ) {
-    		System.out.println("3");
     		swap(n, leftChildIndex);
     		heapifyDown(leftChildIndex);	
     	} else if ((rightChildIndex < size && leftChildIndex < size) && data[rightChildIndex] > data[leftChildIndex] && data[rightChildIndex] > parent) {
-    		System.out.println("4");
     		swap(n, rightChildIndex);
     		heapifyDown(rightChildIndex);
     	}	
@@ -78,10 +77,9 @@ public class MaxHeap implements Heap {
         // homework
     	
     	//insert argument array elements into heap as is
-    	for (int i = 0; i < data.length; i++) {
-    		this.data[i] = data[i];	
-    		size++;
-    	}
+
+    	this.data = data;
+    	size = data.length;
     	
     	if (size == 0) {
     		return;
@@ -89,9 +87,7 @@ public class MaxHeap implements Heap {
     	
     	//heapify each node in heap starting from last parent
     	for (int i = (size - 1) / 2; i >= 0; i--) {
-
-    		heapifyDown(i);
-    		
+    		heapifyDown(i);		
     	}
     	
     }
@@ -125,4 +121,5 @@ public class MaxHeap implements Heap {
         // homework
         return null;
     }
+     
 }

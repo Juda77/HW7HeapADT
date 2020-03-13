@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 
 public class MaxHeapTest {
@@ -47,8 +50,25 @@ public class MaxHeapTest {
 			assertTrue(testHeap.equals(expected[i]));
 		}
 		
-	}
+		//***PERFORMANCE TEST CODE
+		/*
+		int testNum = 1000000;
+		Integer[] big = new Integer[testNum];
+
+		for (int i = 0; i < big.length - 1; i++) {
+			big[i] = i;
+		}
 	
+		
+		big[big.length - 1] = 2;
+		MaxHeap testHeap = new MaxHeap(big.length);
+		long startTime = System.nanoTime();
+		testHeap.MaxHeapLogN(big);
+		long endTime = System.nanoTime();
+	    long durationInMillis = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
+	    System.out.println("O(nlogn) : " + durationInMillis);
+		*/
+	}
 	
 	 // homework
 	@Test
@@ -74,10 +94,23 @@ public class MaxHeapTest {
 			assertTrue(testHeap.equals(expected[i]));
 		}
 		
-			
-			
+		//***PERFORMANCE TEST CODE
+		/*
+		int testNum = 1000000;
+		Integer[] big = new Integer[testNum];
+
+		for (int i = 0; i < big.length - 1; i++) {
+			big[i] = i;
+		}
+	
+		big[big.length - 1] = 2;
+		MaxHeap testHeap = new MaxHeap(big.length);
+		long startTime = System.nanoTime();
+		testHeap.MaxHeapN(big);
+		long endTime = System.nanoTime();
+	    long durationInMillis = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
+	    System.out.println("O(n) : " + durationInMillis);	
+	*/
 	}
-	
-	
 	
 }
