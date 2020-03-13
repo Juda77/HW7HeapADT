@@ -187,7 +187,7 @@ public class MaxHeapTest {
 		testHeaps[6] = testHeap;
 		
 		Integer[] valuesToAdd = {3, 6, 9}; //add each of these values to all test heaps and make sure that test heaps afterwards are correct
-		boolean[] returnVals = new boolean[7];
+		boolean[] returnVals = new boolean[7]; //also keep track of the return vals to make sure they are also correct
 		
 		for (int i = 0; i < testHeaps.length; i++) {	
 
