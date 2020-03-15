@@ -48,8 +48,7 @@ public class MaxHeapTest {
 			testHeap.MaxHeapLogN(testArrays[i]);
 			
 			assertTrue(testHeap.equals(expected[i]));
-		}
-		
+		}	
 		
 	}	
 	
@@ -77,8 +76,6 @@ public class MaxHeapTest {
 			testHeap.MaxHeapN(testArrays[i]);
 			assertTrue(testHeap.equals(expected[i]));
 		}
-		
-		
 	
 	}
 	
